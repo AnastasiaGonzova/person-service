@@ -1,0 +1,8 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/postgres?currentSchema=medical_schema
+    username: postgres
+    password: 31121998
+    driver-class-name: org.postgresql.Driver
