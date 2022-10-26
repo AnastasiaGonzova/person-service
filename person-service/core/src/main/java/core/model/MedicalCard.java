@@ -9,7 +9,6 @@ import java.sql.Date;
 
 @Getter
 @Setter
-@Table("medical_card")
 public class MedicalCard {
 
     @Id
@@ -17,5 +16,5 @@ public class MedicalCard {
     private char clientStatus;
     private char medStatus;
     private Date registryDt;
-    private String comment;
+    private String commentAbout;
 }

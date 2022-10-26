@@ -1,8 +1,15 @@
 server:
-  port: 8080
+  port: 8090
 spring:
   datasource:
-    url: jdbc:postgresql://127.0.0.1:5432/postgres?currentSchema=medical_schema
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=medical_schema
     username: postgres
     password: 31121998
     driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+  sql:
+    init:
+      mode: always
+      data-locations: classpath:init/schema.sql

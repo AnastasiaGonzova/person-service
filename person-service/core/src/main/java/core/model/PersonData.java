@@ -11,7 +11,6 @@ import java.util.Set;
 
 @Getter
 @Setter
-@Table("person_data")
 public class PersonData {
 
     @Id

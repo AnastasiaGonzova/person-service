@@ -10,7 +10,6 @@ import java.util.Set;
 
 @Getter
 @Setter
-@Table("address")
 public class Address {
 
     @Id

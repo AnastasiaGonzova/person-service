@@ -12,7 +12,6 @@ import java.util.Set;
 
 @Getter
 @Setter
-@Table("illness")
 public class Illness {
 
     @Id
