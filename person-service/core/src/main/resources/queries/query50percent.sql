@@ -1,1 +1,0 @@
-select * from person_data limit (select count(*) from person_data)/2

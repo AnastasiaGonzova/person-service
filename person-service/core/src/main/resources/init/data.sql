@@ -1,25 +1,25 @@
 insert into medical_card (id, client_status, med_status, registry_dt, comment_about)
-values (54, 'UT', 'RI', '2012-05-12', 'wn commonly session african ampland');
+values (54, 'REG', 'H', '2012-05-12', 'wn commonly session african ampland');
 insert into medical_card (id, client_status, med_status, registry_dt, comment_about)
-values (59, 'NJ', 'CO', '2001-06-05', 'glow generous college unknown lifetime');
+values (59, 'REG', 'H', '2001-06-05', 'glow generous college unknown lifetime');
 insert into medical_card (id, client_status, med_status, registry_dt, comment_about)
-values (42, 'KY', 'WY', '2019-12-04', 'throw challenges prefix suggest somalia');
+values (42, 'REG', 'UH', '2019-12-04', 'throw challenges prefix suggest somalia');
+insert into medical_card (id, client_status, registry_dt, comment_about)
+values (3, 'UNKN', '2010-04-05', 'adams proportion dimensions biol chancellor');
 insert into medical_card (id, client_status, med_status, registry_dt, comment_about)
-values (3, 'MT', 'ME', '2010-04-05', 'adams proportion dimensions biol chancellor');
+values (47, 'UNREG', 'UH', '2005-11-03', 'requires education permanent qatar parker');
 insert into medical_card (id, client_status, med_status, registry_dt, comment_about)
-values (47, 'KS', 'IN', '2005-11-03', 'requires education permanent qatar parker');
+values (73, 'REG', 'H', '2007-08-24', 'ambassador construct occur patients gnome');
 insert into medical_card (id, client_status, med_status, registry_dt, comment_about)
-values (73, 'CO', 'MT', '2007-08-24', 'ambassador construct occur patients gnome');
+values (31, 'UNREG', 'H', '2021-01-31', 'containers wires constructed decent fall');
 insert into medical_card (id, client_status, med_status, registry_dt, comment_about)
-values (31, 'CO', 'NH', '2021-01-31', 'containers wires constructed decent fall');
+values (34, 'REG', 'UH', '2013-05-04', 'tvs packages icon monitor nitrogen');
 insert into medical_card (id, client_status, med_status, registry_dt, comment_about)
-values (34, 'NH', 'KY', '2013-05-04', 'tvs packages icon monitor nitrogen');
+values (78, 'UNREG', 'H', '2014-08-23', 'handmade laser strings asia touched');
 insert into medical_card (id, client_status, med_status, registry_dt, comment_about)
-values (78, 'MI', 'ID', '2014-08-23', 'handmade laser strings asia touched');
+values (81, 'REG', 'H', '2016-08-23', 'handmade');
 insert into medical_card (id, client_status, med_status, registry_dt, comment_about)
-values (81, 'MI', 'ID', '2016-08-23', 'handmade');
-insert into medical_card (id, client_status, med_status, registry_dt, comment_about)
-values (79, 'MI', 'ID', '2014-08-23', 'handmade laser strings asia touched');
+values (79, 'UNREG', 'H', '2014-08-23', 'handmade laser strings asia touched');
 
 insert into illness (id, medical_card_id, type_id, appearance_dttm)
 values (79, 3, 12, TIMESTAMP '2004-10-19 10:23:54');
@@ -56,7 +56,7 @@ values (80, 83, 7, 'Одинцово', 'пер. Славы', '96', '31');
 insert into address (id, contact_id, country_id, city, street, building, flat)
 values (31, 8, 7, 'Подольск', 'ул. Ладыгина', '29', '31');
 insert into address (id, contact_id, country_id, city, street, building, flat)
-values (7, 59, 7, 'Подольск', 'ул. Ладыгина', '29', '31');
+values (7, 59, 7, 'Нижний Новгород', 'ул. Комсомольская', '29', '31');
 
 
 insert into person_data (id, last_name, first_name, birth_dt, sex, contact_id, medical_card_id)

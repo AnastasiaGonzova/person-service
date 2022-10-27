@@ -12,4 +12,4 @@ spring:
   sql:
     init:
       mode: always
-      data-locations: classpath:init/schema.sql
+      data-locations: classpath:init/schema.sql, classpath:init/data.sql
