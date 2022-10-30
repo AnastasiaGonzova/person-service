@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet id="insert values" author="Gonza">
+        <comment>
+            Внесение первоначальных данных в базу
+        </comment>
+
+        <insert tableName="medical_card">
+            <column name="id" value="54"/>
+            <column name="client_status" value="REG"/>
+            <column name="med_status" value="H"/>
+            <column name="registry_dt" value="2012-05-12"/>
+            <column name="comment_about" value="wn commonly session african ampland"/>
+        </insert>
+
+        <insert tableName="medical_card">
+            <column name="id" value="59"/>
+            <column name="client_status" value="REG"/>
+            <column name="med_status" value="H"/>
+            <column name="registry_dt" value="2001-06-05"/>
+            <column name="comment_about" value="glow generous college unknown lifetime"/>
+        </insert>
+
+        <insert tableName="medical_card">
+            <column name="id" value="42"/>
+            <column name="client_status" value="REG"/>
+            <column name="med_status" value="UH"/>
+            <column name="registry_dt" value="2019-12-04"/>
+            <column name="comment_about" value="throw challenges prefix suggest somalia"/>
+        </insert>
+
+        <insert tableName="medical_card">
+            <column name="id" value="3"/>
+            <column name="client_status" value="UNKN"/>
+            <column name="registry_dt" value="2010-04-05"/>
+            <column name="comment_about" value="adams proportion dimensions biol chancellor"/>
+        </insert>
+
+        <insert tableName="medical_card">
+            <column name="id" value="47"/>
+            <column name="client_status" value="UNREG"/>
+            <column name="med_status" value="UH"/>
+            <column name="registry_dt" value="2005-11-03"/>
+            <column name="comment_about" value="requires education permanent qatar parker"/>
+        </insert>
+
+        <insert tableName="medical_card">
+            <column name="id" value="73"/>
+            <column name="client_status" value="REG"/>
+            <column name="med_status" value="H"/>
+            <column name="registry_dt" value="2007-08-24"/>
+            <column name="comment_about" value="ambassador construct occur patients gnome"/>
+        </insert>
+
+        <insert tableName="medical_card">
+            <column name="id" value="31"/>
+            <column name="client_status" value="UNREG"/>
+            <column name="med_status" value="H"/>
+            <column name="registry_dt" value="2021-01-31"/>
+            <column name="comment_about" value="containers wires constructed decent fall"/>
+        </insert>
+
+        <insert tableName="medical_card">
+            <column name="id" value="34"/>
+            <column name="client_status" value="REG"/>
+            <column name="med_status" value="UH"/>
+            <column name="registry_dt" value="2013-05-04"/>
+            <column name="comment_about" value="tvs packages icon monitor nitrogen"/>
+        </insert>
+
+        <insert tableName="medical_card">
+            <column name="id" value="78"/>
+            <column name="client_status" value="UNREG"/>
+            <column name="med_status" value="H"/>
+            <column name="registry_dt" value="2014-08-23"/>
+            <column name="comment_about" value="handmade laser strings asia touched"/>
+        </insert>
+
+        <insert tableName="medical_card">
+            <column name="id" value="81"/>
+            <column name="client_status" value="REG"/>
+            <column name="med_status" value="H"/>
+            <column name="registry_dt" value="2016-08-23"/>
+            <column name="comment_about" value="handmade"/>
+        </insert>
+
+
+
+        <insert tableName="illness">
+            <column name="id" value="79"/>
+            <column name="medical_card_id" value="3"/>
+            <column name="type_id" value="12"/>
+            <column name="appearance_dttm" value="2004-10-19 10:23:54"/>
+        </insert>
+
+        <insert tableName="illness">
+            <column name="id" value="56"/>
+            <column name="medical_card_id" value="47"/>
+            <column name="type_id" value="10"/>
+            <column name="appearance_dttm" value="2012-01-21 10:23:54"/>
+        </insert>
+
+
+
+        <insert tableName="contact">
+            <column name="id" value="97"/>
+            <column name="phone_number" value="+7-954-738-89-63"/>
+            <column name="email" value="dmitriy10101970@mail.ru"/>
+        </insert>
+
+        <insert tableName="contact">
+            <column name="id" value="40"/>
+            <column name="phone_number" value="+7-917-189-15-70"/>
+            <column name="email" value="pavel04051992@ya.ru"/>
+        </insert>
+
+        <insert tableName="contact">
+            <column name="id" value="6"/>
+            <column name="phone_number" value="+7-954-526-82-94"/>
+            <column name="email" value="nadejda46@ya.ru"/>
+        </insert>
+
+        <insert tableName="contact">
+            <column name="id" value="76"/>
+            <column name="phone_number" value="+7-945-745-52-49"/>
+            <column name="email" value="sergey.nikulaichev@yandex.ru"/>
+        </insert>
+
+        <insert tableName="contact">
+            <column name="id" value="11"/>
+            <column name="phone_number" value="+7-974-310-51-66"/>
+            <column name="email" value="lev21@outlook.com"/>
+        </insert>
+
+        <insert tableName="contact">
+            <column name="id" value="38"/>
+            <column name="phone_number" value="+7-966-667-57-30"/>
+            <column name="email" value="viktoriya24@hotmail.com"/>
+        </insert>
+
+        <insert tableName="contact">
+            <column name="id" value="83"/>
+            <column name="phone_number" value="+7-982-771-77-21"/>
+            <column name="email" value="roman.koshkov@rambler.ru"/>
+        </insert>
+
+        <insert tableName="contact">
+            <column name="id" value="66"/>
+            <column name="phone_number" value="+7-975-462-15-89"/>
+            <column name="email" value="karina6991@rambler.ru"/>
+        </insert>
+
+        <insert tableName="contact">
+            <column name="id" value="8"/>
+            <column name="phone_number" value="+7-980-152-88-41"/>
+            <column name="email" value="yuliya.radygina@outlook.com"/>
+        </insert>
+
+        <insert tableName="contact">
+            <column name="id" value="59"/>
+            <column name="phone_number" value="+7-960-389-40-67"/>
+            <column name="email" value="valeriya1967@gmail.com"/>
+        </insert>
+
+
+
+        <insert tableName="address">
+            <column name="id" value="9"/>
+            <column name="contact_id" value="97"/>
+            <column name="country_id" value="7"/>
+            <column name="city" value="Лотошино"/>
+            <column name="street" value="пл. Славы"/>
+            <column name="building" value="8"/>
+            <column name="flat" value="31"/>
+        </insert>
+
+        <insert tableName="address">
+            <column name="id" value="94"/>
+            <column name="contact_id" value="11"/>
+            <column name="country_id" value="7"/>
+            <column name="city" value="Можайск"/>
+            <column name="street" value="пер. Косиора"/>
+            <column name="building" value="94"/>
+            <column name="flat" value="31"/>
+        </insert>
+
+        <insert tableName="address">
+            <column name="id" value="80"/>
+            <column name="contact_id" value="83"/>
+            <column name="country_id" value="7"/>
+            <column name="city" value="Одинцово"/>
+            <column name="street" value="пер. Славы"/>
+            <column name="building" value="96"/>
+            <column name="flat" value="31"/>
+        </insert>
+
+        <insert tableName="address">
+            <column name="id" value="31"/>
+            <column name="contact_id" value="8"/>
+            <column name="country_id" value="7"/>
+            <column name="city" value="Подольск"/>
+            <column name="street" value="ул. Ладыгина"/>
+            <column name="building" value="29"/>
+            <column name="flat" value="31"/>
+        </insert>
+
+        <insert tableName="address">
+            <column name="id" value="7"/>
+            <column name="contact_id" value="59"/>
+            <column name="country_id" value="7"/>
+            <column name="city" value="Нижний Новгород"/>
+            <column name="street" value="ул. Комсомольская"/>
+            <column name="building" value="29"/>
+            <column name="flat" value="31"/>
+        </insert>
+
+
+
+        <insert tableName="person_data">
+            <column name="id" value="84"/>
+            <column name="last_name" value="Кожевников"/>
+            <column name="first_name" value="Дмитрий"/>
+            <column name="birth_dt" value="1970-10-10"/>
+            <column name="sex" value="М"/>
+            <column name="contact_id" value="97"/>
+            <column name="medical_card_id" value="54"/>
+        </insert>
+
+        <insert tableName="person_data">
+            <column name="id" value="15"/>
+            <column name="last_name" value="Пищальников"/>
+            <column name="first_name" value="Павел"/>
+            <column name="birth_dt" value="1992-05-04"/>
+            <column name="sex" value="М"/>
+            <column name="contact_id" value="40"/>
+            <column name="medical_card_id" value="59"/>
+            <column name="parent_id" value="84"/>
+        </insert>
+
+        <insert tableName="person_data">
+            <column name="id" value="92"/>
+            <column name="last_name" value="Волобуева"/>
+            <column name="first_name" value="Надежда"/>
+            <column name="birth_dt" value="1980-09-13"/>
+            <column name="sex" value="Ж"/>
+            <column name="contact_id" value="6"/>
+            <column name="medical_card_id" value="42"/>
+        </insert>
+
+        <insert tableName="person_data">
+            <column name="id" value="5"/>
+            <column name="last_name" value="Прудникова"/>
+            <column name="first_name" value="Валерия"/>
+            <column name="birth_dt" value="1967-08-13"/>
+            <column name="sex" value="Ж"/>
+            <column name="contact_id" value="59"/>
+            <column name="medical_card_id" value="81"/>
+        </insert>
+
+        <insert tableName="person_data">
+            <column name="id" value="95"/>
+            <column name="last_name" value="Никулаичев"/>
+            <column name="first_name" value="Сергей"/>
+            <column name="birth_dt" value="1996-06-06"/>
+            <column name="sex" value="М"/>
+            <column name="contact_id" value="76"/>
+            <column name="medical_card_id" value="3"/>
+            <column name="parent_id" value="5"/>
+        </insert>
+
+        <insert tableName="person_data">
+            <column name="id" value="13"/>
+            <column name="last_name" value="Каналин"/>
+            <column name="first_name" value="Лев"/>
+            <column name="birth_dt" value="1977-11-23"/>
+            <column name="sex" value="М"/>
+            <column name="contact_id" value="11"/>
+            <column name="medical_card_id" value="47"/>
+        </insert>
+
+        <insert tableName="person_data">
+            <column name="id" value="91"/>
+            <column name="last_name" value="Самохина"/>
+            <column name="first_name" value="Виктория"/>
+            <column name="birth_dt" value="1995-12-19"/>
+            <column name="sex" value="Ж"/>
+            <column name="contact_id" value="38"/>
+            <column name="medical_card_id" value="73"/>
+            <column name="parent_id" value="84"/>
+        </insert>
+
+        <insert tableName="person_data">
+            <column name="id" value="31"/>
+            <column name="last_name" value="Кошков"/>
+            <column name="first_name" value="Роман"/>
+            <column name="birth_dt" value="1994-10-01"/>
+            <column name="sex" value="М"/>
+            <column name="contact_id" value="83"/>
+            <column name="medical_card_id" value="31"/>
+        </insert>
+
+        <insert tableName="person_data">
+            <column name="id" value="22"/>
+            <column name="last_name" value="Климова"/>
+            <column name="first_name" value="Карина"/>
+            <column name="birth_dt" value="1964-10-01"/>
+            <column name="sex" value="Ж"/>
+            <column name="contact_id" value="66"/>
+            <column name="medical_card_id" value="34"/>
+        </insert>
+
+        <insert tableName="person_data">
+            <column name="id" value="47"/>
+            <column name="last_name" value="Радыгина"/>
+            <column name="first_name" value="Юлия"/>
+            <column name="birth_dt" value="1996-11-14"/>
+            <column name="sex" value="Ж"/>
+            <column name="contact_id" value="8"/>
+            <column name="medical_card_id" value="78"/>
+            <column name="parent_id" value="13"/>
+        </insert>
+
+    </changeSet>
+
+</databaseChangeLog>

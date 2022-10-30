@@ -3,7 +3,6 @@ package core.model;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
 
 import java.sql.Date;
 
@@ -13,8 +12,8 @@ public class MedicalCard {
 
     @Id
     private Long id;
-    private char clientStatus;
-    private char medStatus;
+    private Character clientStatus;
+    private Character medStatus;
     private Date registryDt;
     private String commentAbout;
 }

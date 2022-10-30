@@ -1,11 +1,11 @@
 server:
-  port: 8090
+  port: 8091
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres?currentSchema=medical_schema
     username: postgres
     password: 31121998
     driver-class-name: org.postgresql.Driver
-  jpa:
-    hibernate:
-      ddl-auto: none
+  liquibase:
+    change-log: classpath:/db/changelog.xml
+    enabled: false
