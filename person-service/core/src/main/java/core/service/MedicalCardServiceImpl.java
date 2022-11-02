@@ -3,6 +3,7 @@ package core.service;
 import core.api.repository.MedicalCardRepository;
 import core.api.service.MedicalCardService;
 import core.model.MedicalCard;
+import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Hibernate;
@@ -12,11 +13,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Transactional(readOnly = true)
 public class MedicalCardServiceImpl implements MedicalCardService {
 
-    @NonNull
     private MedicalCardRepository medicalCardRepository;
 
     @Override

@@ -9,6 +9,8 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Set;
 
+import static lombok.AccessLevel.PRIVATE;
+
 @Getter
 @Setter
 public class Illness {
@@ -20,6 +22,7 @@ public class Illness {
     private Timestamp appearanceDttm;
     private Date recoveryDt;
 
+    @Setter(PRIVATE)
     @MappedCollection(idColumn = "medical_card_id")
     private Set<MedicalCard> medicalCards;
 

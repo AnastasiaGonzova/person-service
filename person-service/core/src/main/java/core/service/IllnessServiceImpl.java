@@ -5,6 +5,7 @@ import core.api.service.IllnessService;
 import core.api.service.MedicalCardService;
 import core.model.Illness;
 import core.model.MedicalCard;
+import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Hibernate;
@@ -12,14 +13,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Transactional(readOnly = true)
 public class IllnessServiceImpl implements IllnessService {
 
-    @NonNull
     private IllnessRepository illnessRepository;
-
-    @NonNull
     private MedicalCardService medicalCardService;
 
     @Override

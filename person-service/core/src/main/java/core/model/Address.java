@@ -7,6 +7,8 @@ import org.springframework.data.relational.core.mapping.MappedCollection;
 
 import java.util.Set;
 
+import static lombok.AccessLevel.PRIVATE;
+
 @Getter
 @Setter
 public class Address {
@@ -15,11 +17,16 @@ public class Address {
     private Long id;
     private Long countryId;
     private String city;
-    private int postCode;
+    private Integer postCode;
     private String street;
     private String building;
     private String flat;
 
+    @Setter(PRIVATE)
     @MappedCollection(idColumn = "contact_id")
     private Set<Contact> contacts;
+
+    public void assignContact(Contact contact){
+        this.contacts.add(contact);
+    }
 }
