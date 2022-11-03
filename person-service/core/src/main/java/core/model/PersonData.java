@@ -1,7 +1,6 @@
 package core.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.MappedCollection;
 
@@ -10,8 +9,9 @@ import java.util.Set;
 
 import static lombok.AccessLevel.PRIVATE;
 
-@Getter
-@Setter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class PersonData {
 
     @Id

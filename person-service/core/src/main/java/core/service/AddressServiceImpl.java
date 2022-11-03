@@ -2,10 +2,11 @@ package core.service;
 
 import core.api.service.AddressService;
 import core.api.service.ContactService;
-import core.mapper.AddressMapper;
+import core.api.mapper.AddressMapper;
 import core.model.Address;
 import core.model.Contact;
 import lombok.AllArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +17,7 @@ public class AddressServiceImpl implements AddressService {
 
     private AddressMapper addressMapper;
     private ContactService contactService;
+    private ModelMapper modelMapper;
 
     @Override
     public Address get(Long id) {
@@ -25,32 +27,17 @@ public class AddressServiceImpl implements AddressService {
     @Override
     @Transactional
     public Address create(Address addressJson) {
-        return addressMapper.create(addressJson);
+        addressMapper.create(addressJson);
+        return addressJson;
     }
 
     @Override
     @Transactional
     public Address update(Long id, Address addressJson) {
         Address updatedAddress = addressMapper.get(id);
-        if(addressJson.getCountryId() != null){
-            updatedAddress.setCountryId(addressJson.getCountryId());
-        }
-        if(addressJson.getCity() != null){
-            updatedAddress.setCity(addressJson.getCity());
-        }
-        if(addressJson.getPostCode() != null){
-            updatedAddress.setPostCode(addressJson.getPostCode());
-        }
-        if(addressJson.getStreet() != null){
-            updatedAddress.setStreet(addressJson.getStreet());
-        }
-        if(addressJson.getBuilding() != null){
-            updatedAddress.setBuilding(addressJson.getBuilding());
-        }
-        if(addressJson.getFlat() != null){
-            updatedAddress.setFlat(addressJson.getFlat());
-        }
-        return addressMapper.update(id, updatedAddress);
+        modelMapper.map(addressJson, updatedAddress);
+        addressMapper.update(id, updatedAddress);
+        return updatedAddress;
     }
 
     @Override
@@ -65,6 +52,7 @@ public class AddressServiceImpl implements AddressService {
         final Address address = addressMapper.get(addressId);
         final Contact contact = contactService.get(contactId);
         address.assignContact(contact);
-        return addressMapper.assignContact(addressId, contactId);
+        addressMapper.assignContact(addressId, contactId);
+        return address;
     }
 }

@@ -6,9 +6,8 @@ import core.api.service.MedicalCardService;
 import core.model.Illness;
 import core.model.MedicalCard;
 import lombok.AllArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import org.hibernate.Hibernate;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +18,8 @@ public class IllnessServiceImpl implements IllnessService {
 
     private IllnessRepository illnessRepository;
     private MedicalCardService medicalCardService;
+
+    private ModelMapper modelMapper;
 
     @Override
     public Illness get(Long id) {
@@ -43,18 +44,7 @@ public class IllnessServiceImpl implements IllnessService {
     @Transactional
     public Illness update(Long id, Illness illnessJson) {
         Illness updatedIllness = illnessRepository.findById(id).orElseThrow();
-        if(illnessJson.getTypeId()!= null){
-            updatedIllness.setTypeId(illnessJson.getTypeId());
-        }
-        if(illnessJson.getHeaviness() != null){
-            updatedIllness.setHeaviness(illnessJson.getHeaviness());
-        }
-        if(illnessJson.getAppearanceDttm() != null){
-            updatedIllness.setAppearanceDttm(illnessJson.getAppearanceDttm());
-        }
-        if(illnessJson.getRecoveryDt() != null){
-            updatedIllness.setRecoveryDt(illnessJson.getRecoveryDt());
-        }
+        modelMapper.map(illnessJson, updatedIllness);
         return illnessRepository.save(updatedIllness);
     }
 

@@ -2,7 +2,9 @@ package core.controller;
 
 import core.api.service.MedicalCardService;
 import core.model.MedicalCard;
+import dto.external.MedicalCardDto;
 import lombok.AllArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -13,25 +15,29 @@ import java.util.Optional;
 public class MedicalCardController {
 
     private MedicalCardService medicalCardService;
+    private ModelMapper modelMapper;
 
     @GetMapping("/{med_card_id}")
-    public MedicalCard get(@PathVariable(name="med_card_id") Long medicalCardId){
+    public MedicalCardDto get(@PathVariable(name="med_card_id") Long medicalCardId){
         return Optional.of(medicalCardId)
                 .map(medicalCardService::getAndInitialize)
+                .map(current->modelMapper.map(current, MedicalCardDto.class))
                 .orElseThrow();
     }
 
     @PostMapping()
-    public MedicalCard create(@RequestBody MedicalCard medicalCardJson){
+    public MedicalCardDto create(@RequestBody MedicalCard medicalCardJson){
         return Optional.ofNullable(medicalCardJson)
                 .map(medicalCardService::create)
+                .map(current->modelMapper.map(current, MedicalCardDto.class))
                 .orElseThrow();
     }
 
     @PutMapping("/{med_card_id}/update")
-    public MedicalCard update(@PathVariable(name="med_card_id") Long medicalCardId, @RequestBody MedicalCard medicalCardJson){
+    public MedicalCardDto update(@PathVariable(name="med_card_id") Long medicalCardId, @RequestBody MedicalCard medicalCardJson){
         return Optional.ofNullable(medicalCardJson)
                 .map(toUpdate->medicalCardService.update(medicalCardId, medicalCardJson))
+                .map(current->modelMapper.map(current, MedicalCardDto.class))
                 .orElseThrow();
     }
 

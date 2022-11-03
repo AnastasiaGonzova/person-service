@@ -4,13 +4,10 @@ import core.api.repository.MedicalCardRepository;
 import core.api.service.MedicalCardService;
 import core.model.MedicalCard;
 import lombok.AllArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import org.hibernate.Hibernate;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -18,6 +15,8 @@ import java.util.Optional;
 public class MedicalCardServiceImpl implements MedicalCardService {
 
     private MedicalCardRepository medicalCardRepository;
+
+    private ModelMapper modelMapper;
 
     @Override
     public MedicalCard get(Long id) {
@@ -41,18 +40,7 @@ public class MedicalCardServiceImpl implements MedicalCardService {
     @Transactional
     public MedicalCard update(Long id, MedicalCard medicalCardJson) {
         MedicalCard updatedMedicalCard = medicalCardRepository.findById(id).orElseThrow();
-        if(medicalCardJson.getClientStatus()!= null){
-            updatedMedicalCard.setClientStatus(medicalCardJson.getClientStatus());
-        }
-        if(medicalCardJson.getMedStatus() != null){
-            updatedMedicalCard.setMedStatus(medicalCardJson.getMedStatus());
-        }
-        if(medicalCardJson.getRegistryDt() != null){
-            updatedMedicalCard.setRegistryDt(medicalCardJson.getRegistryDt());
-        }
-        if(medicalCardJson.getCommentAbout() != null){
-            updatedMedicalCard.setCommentAbout(medicalCardJson.getCommentAbout());
-        }
+        modelMapper.map(medicalCardJson, updatedMedicalCard);
         return medicalCardRepository.save(updatedMedicalCard);
     }
 

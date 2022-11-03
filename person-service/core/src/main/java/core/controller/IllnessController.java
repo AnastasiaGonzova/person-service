@@ -2,7 +2,9 @@ package core.controller;
 
 import core.api.service.IllnessService;
 import core.model.Illness;
+import dto.external.IllnessDto;
 import lombok.AllArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -13,25 +15,29 @@ import java.util.Optional;
 public class IllnessController {
 
     private IllnessService illnessService;
+    private ModelMapper modelMapper;
 
     @GetMapping("/{illness_id}")
-    public Illness get(@PathVariable(name="illness_id") Long illnessId){
+    public IllnessDto get(@PathVariable(name="illness_id") Long illnessId){
         return Optional.of(illnessId)
                 .map(illnessService::getAndInitialize)
+                .map(current->modelMapper.map(current, IllnessDto.class))
                 .orElseThrow();
     }
 
     @PostMapping()
-    public Illness create(@RequestBody Illness illnessJson){
+    public IllnessDto create(@RequestBody Illness illnessJson){
         return Optional.ofNullable(illnessJson)
                 .map(illnessService::create)
+                .map(current->modelMapper.map(current, IllnessDto.class))
                 .orElseThrow();
     }
 
     @PutMapping("/{illness_id}/update")
-    public Illness update(@PathVariable(name="illness_id") Long illnessId, @RequestBody Illness illnessJson){
+    public IllnessDto update(@PathVariable(name="illness_id") Long illnessId, @RequestBody Illness illnessJson){
         return Optional.ofNullable(illnessJson)
                 .map(toUpdate->illnessService.update(illnessId, illnessJson))
+                .map(current->modelMapper.map(current, IllnessDto.class))
                 .orElseThrow();
     }
 
@@ -41,9 +47,10 @@ public class IllnessController {
     }
 
     @PostMapping("/{illness_id}/medical_cards/{medical_card_id}")
-    public Illness assignMedicalCard(@PathVariable(name="illness_id") Long illnessId, @PathVariable(name="medical_card_id") Long medicalCardId){
+    public IllnessDto assignMedicalCard(@PathVariable(name="illness_id") Long illnessId, @PathVariable(name="medical_card_id") Long medicalCardId){
         return Optional.of(illnessId)
                 .map(current->illnessService.assignMedicalCard(medicalCardId, illnessId))
+                .map(current->modelMapper.map(current, IllnessDto.class))
                 .orElseThrow();
     }
 }

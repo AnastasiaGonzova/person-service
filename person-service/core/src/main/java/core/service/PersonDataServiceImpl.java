@@ -3,13 +3,12 @@ package core.service;
 import core.api.service.ContactService;
 import core.api.service.MedicalCardService;
 import core.api.service.PersonDataService;
-import core.mapper.PersonMapper;
+import core.api.mapper.PersonMapper;
 import core.model.Contact;
 import core.model.MedicalCard;
 import core.model.PersonData;
 import lombok.AllArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,6 +21,8 @@ public class PersonDataServiceImpl implements PersonDataService {
     private ContactService contactService;
     private MedicalCardService medicalCardService;
 
+    private ModelMapper modelMapper;
+
     @Override
     public PersonData get(Long id) {
         return personMapper.get(id);
@@ -30,29 +31,17 @@ public class PersonDataServiceImpl implements PersonDataService {
     @Override
     @Transactional
     public PersonData create(PersonData personDataJson) {
-        return personMapper.create(personDataJson);
+        personMapper.create(personDataJson);
+        return personDataJson;
     }
 
     @Override
     @Transactional
     public PersonData update(Long id, PersonData personDataJson) {
         PersonData updatedPersonData = personMapper.get(id);
-        if(personDataJson.getLastName()!= null){
-            updatedPersonData.setLastName(personDataJson.getLastName());
-        }
-        if(personDataJson.getFirstName() != null){
-            updatedPersonData.setFirstName(personDataJson.getFirstName());
-        }
-        if(personDataJson.getBirthDt() != null){
-            updatedPersonData.setBirthDt(personDataJson.getBirthDt());
-        }
-        if(personDataJson.getAge() != null){
-            updatedPersonData.setAge(personDataJson.getAge());
-        }
-        if(personDataJson.getSex() != null){
-            updatedPersonData.setSex(personDataJson.getSex());
-        }
-        return personMapper.update(id, updatedPersonData);
+        modelMapper.map(personDataJson, updatedPersonData);
+        personMapper.update(id, updatedPersonData);
+        return updatedPersonData;
     }
 
     @Override
@@ -67,7 +56,8 @@ public class PersonDataServiceImpl implements PersonDataService {
         final Contact contact = contactService.get(contactId);
         final PersonData personData = personMapper.get(personId);
         personData.assignContact(contact);
-        return personMapper.assignContact(personId, contactId);
+        personMapper.assignContact(personId, contactId);
+        return personData;
     }
 
     @Override
@@ -76,7 +66,8 @@ public class PersonDataServiceImpl implements PersonDataService {
         final MedicalCard medicalCard = medicalCardService.get(medicalCardId);
         final PersonData personData = personMapper.get(personId);
         personData.assignMedicalCard(medicalCard);
-        return personMapper.assignMedicalCard(personId, medicalCardId);
+        personMapper.assignMedicalCard(personId, medicalCardId);
+        return personData;
     }
 
     @Override
@@ -85,6 +76,7 @@ public class PersonDataServiceImpl implements PersonDataService {
         final PersonData personData = personMapper.get(personId);
         final PersonData parentData = personMapper.get(parentId);
         personData.assignParent(parentData);
-        return personMapper.assignParent(personId, parentId);
+        personMapper.assignParent(personId, parentId);
+        return personData;
     }
 }
