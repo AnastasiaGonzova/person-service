@@ -27,7 +27,7 @@
                 <constraints nullable="false" primaryKey="true" unique="true" primaryKeyName="pk_illness"/>
             </column>
             <column name="medical_card_id" type="BIGINT">
-                <constraints nullable="false" references="medical_card(id)" foreignKeyName="fk_medical_card_illness"/>
+                <constraints references="medical_card(id)" foreignKeyName="fk_medical_card_illness"/>
             </column>
             <column name="type_id" type="BIGINT"/>
             <column name="heaviness" type="CHAR(1)"/>
@@ -53,7 +53,7 @@
                 <constraints nullable="false" primaryKey="true" unique="true" primaryKeyName="pk_address"/>
             </column>
             <column name="contact_id" type="BIGINT">
-                <constraints nullable="false" references="contact(id)" foreignKeyName="fk_contact_address"/>
+                <constraints references="contact(id)" foreignKeyName="fk_contact_address"/>
             </column>
             <column name="country_id" type="BIGINT">
                 <constraints nullable="false"/>
@@ -87,10 +87,10 @@
             <column name="age" type="SMALLINT"/>
             <column name="sex" type="CHAR(1)"/>
             <column name="contact_id" type="BIGINT">
-                <constraints nullable="false" references="contact(id)" foreignKeyName="fk_contact_person_data"/>
+                <constraints references="contact(id)" foreignKeyName="fk_contact_person_data"/>
             </column>
             <column name="medical_card_id" type="BIGINT">
-                <constraints nullable="false" unique="true" references="medical_card(id)" foreignKeyName="fk_medical_card_person_data"/>
+                <constraints unique="true" references="medical_card(id)" foreignKeyName="fk_medical_card_person_data"/>
             </column>
             <column name="parent_id" type="BIGINT">
                 <constraints references="person_data(id)" foreignKeyName="fk_person_parent" checkConstraint="parent_id != id"/>
