@@ -12,8 +12,8 @@ public class MedicalCard {
 
     @Id
     private Long id;
-    private Character clientStatus;
-    private Character medStatus;
+    private String clientStatus;
+    private String medStatus;
     private Date registryDt;
     private String commentAbout;
 }

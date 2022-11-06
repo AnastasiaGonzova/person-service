@@ -25,14 +25,6 @@ public class ContactController {
                 .orElseThrow();
     }
 
-    @PostMapping()
-    public ContactDto create(@RequestBody Contact contactJson){
-        return Optional.ofNullable(contactJson)
-                .map(contactService::create)
-                .map(current->modelMapper.map(current, ContactDto.class))
-                .orElseThrow();
-    }
-
     @PutMapping("/{contact_id}/update")
     public ContactDto update(@PathVariable(name="contact_id") Long contactId, @RequestBody Contact contactJson){
         return Optional.ofNullable(contactJson)
@@ -41,7 +33,7 @@ public class ContactController {
                 .orElseThrow();
     }
 
-    @DeleteMapping("/{contact_id}/delete")
+    @DeleteMapping("/{contact_id}/admin/delete")
     public void delete(@PathVariable(name="contact_id") Long contactId){
         contactService.delete(contactId);
     }

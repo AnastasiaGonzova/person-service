@@ -25,7 +25,7 @@ public class IllnessController {
                 .orElseThrow();
     }
 
-    @PostMapping()
+    @PostMapping("/admin")
     public IllnessDto create(@RequestBody Illness illnessJson){
         return Optional.ofNullable(illnessJson)
                 .map(illnessService::create)
@@ -41,12 +41,12 @@ public class IllnessController {
                 .orElseThrow();
     }
 
-    @DeleteMapping("/{illness_id}/delete")
+    @DeleteMapping("/{illness_id}/admin/delete")
     public void delete(@PathVariable(name="illness_id") Long illnessId){
         illnessService.delete(illnessId);
     }
 
-    @PostMapping("/{illness_id}/medical_cards/{medical_card_id}")
+    @PostMapping("/{illness_id}/admin/medical_cards/{medical_card_id}")
     public IllnessDto assignMedicalCard(@PathVariable(name="illness_id") Long illnessId, @PathVariable(name="medical_card_id") Long medicalCardId){
         return Optional.of(illnessId)
                 .map(current->illnessService.assignMedicalCard(medicalCardId, illnessId))

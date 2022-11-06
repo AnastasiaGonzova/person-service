@@ -25,14 +25,6 @@ public class MedicalCardController {
                 .orElseThrow();
     }
 
-    @PostMapping()
-    public MedicalCardDto create(@RequestBody MedicalCard medicalCardJson){
-        return Optional.ofNullable(medicalCardJson)
-                .map(medicalCardService::create)
-                .map(current->modelMapper.map(current, MedicalCardDto.class))
-                .orElseThrow();
-    }
-
     @PutMapping("/{med_card_id}/update")
     public MedicalCardDto update(@PathVariable(name="med_card_id") Long medicalCardId, @RequestBody MedicalCard medicalCardJson){
         return Optional.ofNullable(medicalCardJson)
@@ -41,7 +33,7 @@ public class MedicalCardController {
                 .orElseThrow();
     }
 
-    @DeleteMapping("/{med_card_id}/delete")
+    @DeleteMapping("/{med_card_id}/admin/delete")
     public void delete(@PathVariable(name="med_card_id") Long medicalCardId){
         medicalCardService.delete(medicalCardId);
     }

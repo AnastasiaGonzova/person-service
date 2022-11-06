@@ -25,7 +25,7 @@ public class AddressController {
                 .orElseThrow();
     }
 
-    @PostMapping()
+    @PostMapping("/admin")
     public AddressDto create(@RequestBody Address addressJson){
         return Optional.ofNullable(addressJson)
                 .map(addressService::create)
@@ -41,12 +41,12 @@ public class AddressController {
                 .orElseThrow();
     }
 
-    @DeleteMapping("/{address_id}/delete")
+    @DeleteMapping("/{address_id}/admin/delete")
     public void delete(@PathVariable(name="address_id") Long addressId){
         addressService.delete(addressId);
     }
 
-    @PostMapping("/{address_id}/contacts/{contact_id}")
+    @PostMapping("/{address_id}/admin/contacts/{contact_id}")
     public AddressDto assignContact(@PathVariable(name="address_id") Long addressId, @PathVariable(name="contact_id") Long contactId){
         return Optional.of(addressId)
                 .map(current->addressService.assignContact(addressId, contactId))
