@@ -2,24 +2,14 @@ package core.service;
 
 import core.api.repository.RoleRepository;
 import core.api.repository.UserRepository;
-import core.api.repository.UserRoleRepository;
 import core.api.service.UserService;
-import core.model.Role;
 import core.model.User;
-import core.model.UserRole.UserRole;
-import core.model.UserRole.UserRoleKey;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @Service
 @AllArgsConstructor
@@ -35,13 +25,13 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public User create(User userJson) {
-        return userRepository.save(userJson);
+        return userRepository.saveAndFlush(userJson);
     }
 
     @Override
     @Transactional
     public User update(Long id, User userJson) {
-        User updatedUser = userRepository.findById(id).orElseThrow();
+        User updatedUser = userRepository.getById(id);
         modelMapper.map(userJson, updatedUser);
         return userRepository.save(updatedUser);
     }
@@ -65,12 +55,13 @@ public class UserServiceImpl implements UserService {
             throw new UsernameNotFoundException(username);
         }
 
-        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+        /*Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
         user.getRoles().stream().forEach(userRole->
                 grantedAuthorities.add(
                         new SimpleGrantedAuthority(
                                 roleRepository.findById(userRole.getId().getRoleId()).orElseThrow().getRoleName())));
 
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);*/
+        return null;
     }
 }

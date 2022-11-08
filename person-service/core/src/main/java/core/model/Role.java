@@ -1,14 +1,14 @@
 package core.model;
 
-import core.model.UserRole.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.security.core.GrantedAuthority;
 
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import java.util.Set;
 
 import static lombok.AccessLevel.PRIVATE;
@@ -16,6 +16,7 @@ import static lombok.AccessLevel.PRIVATE;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "role")
 public class Role implements GrantedAuthority {
 
     @Id
@@ -23,8 +24,8 @@ public class Role implements GrantedAuthority {
     private String roleName;
 
     @Setter(PRIVATE)
-    @MappedCollection(idColumn = "role_id")
-    private Set<UserRole> users;
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
 
     @Override
     public String getAuthority() {

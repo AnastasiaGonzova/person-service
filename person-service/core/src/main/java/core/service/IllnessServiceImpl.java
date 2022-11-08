@@ -23,29 +23,29 @@ public class IllnessServiceImpl implements IllnessService {
 
     @Override
     public Illness get(Long id) {
-        return illnessRepository.findById(id).orElseThrow();
+        return illnessRepository.getById(id);
     }
 
     @Override
     public Illness getAndInitialize(Long id) {
-        Illness illness = illnessRepository.findById(id).orElseThrow();
+        Illness illness = illnessRepository.getById(id);
         Hibernate.initialize(illness);
-        Hibernate.initialize(illness.getMedicalCards());
+        Hibernate.initialize(illness.getMedicalCard());
         return illness;
     }
 
     @Override
     @Transactional
     public Illness create(Illness illnessJson) {
-        return illnessRepository.save(illnessJson);
+        return illnessRepository.saveAndFlush(illnessJson);
     }
 
     @Override
     @Transactional
     public Illness update(Long id, Illness illnessJson) {
-        Illness updatedIllness = illnessRepository.findById(id).orElseThrow();
+        Illness updatedIllness = illnessRepository.getById(id);
         modelMapper.map(illnessJson, updatedIllness);
-        return illnessRepository.save(updatedIllness);
+        return illnessRepository.saveAndFlush(updatedIllness);
     }
 
     @Override
@@ -59,7 +59,7 @@ public class IllnessServiceImpl implements IllnessService {
     public Illness assignMedicalCard(Long medicalCardId, Long illnessId){
         final MedicalCard medicalCard = medicalCardService.get(medicalCardId);
         final Illness illness = illnessRepository.findById(illnessId).orElseThrow();
-        illness.assignMedicalCard(medicalCard);
+        //illness.assignMedicalCard(medicalCard);
         return illnessRepository.save(illness);
     }
 }

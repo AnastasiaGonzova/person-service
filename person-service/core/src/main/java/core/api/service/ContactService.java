@@ -6,6 +6,8 @@ public interface ContactService {
 
     Contact get(Long id);
 
+    Contact getAndInitialize(Long id);
+
     Contact create(Contact contactJson);
 
     Contact update(Long id, Contact contactJson);

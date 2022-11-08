@@ -1,15 +1,13 @@
 package core.model;
 
-import core.model.UserRole.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.*;
 import java.util.Collection;
 import java.util.Set;
 
@@ -18,6 +16,7 @@ import static lombok.AccessLevel.PRIVATE;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "user")
 public class User implements UserDetails {
 
     @Id
@@ -28,16 +27,18 @@ public class User implements UserDetails {
     private String password;
     private String passwordConfirm;
 
-    @MappedCollection(idColumn = "person_data_id")
+    @OneToOne
+    @JoinColumn(name = "person_data_id")
     private PersonData personData;
 
     @Setter(PRIVATE)
-    @MappedCollection(idColumn = "user_id")
-    private Set<UserRole> roles;
-
-    public void assignPerson(PersonData personData){
-        this.personData = personData;
-    }
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_role",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "role_id") }
+    )
+    private Set<Role> roles;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

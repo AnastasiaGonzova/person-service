@@ -5,6 +5,8 @@ import core.model.Address;
 public interface AddressService {
     Address get(Long id);
 
+    Address getAndInitialize(Long id);
+
     Address create(Address addressJson);
 
     Address update(Long id, Address addressJson);

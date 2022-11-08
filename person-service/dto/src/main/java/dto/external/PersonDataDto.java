@@ -1,10 +1,14 @@
 package dto.external;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.*;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.MappedCollection;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import java.sql.Date;
 import java.util.Set;
 
@@ -32,15 +36,18 @@ public class PersonDataDto {
     @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     private Character sex;
 
-    @MappedCollection(idColumn = "contact_id")
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
-    private Set<ContactDto> contacts;
+    @OneToOne
+    @JoinColumn(name="contact_id")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private ContactDto contact;
 
-    @MappedCollection(idColumn = "medical_card_id")
+    @OneToOne
+    @JoinColumn(name="medical_card_id")
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private MedicalCardDto medicalCard;
 
-    @MappedCollection(idColumn = "parent_id")
+    @OneToMany
+    @JoinColumn(name="parent_id")
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private Set<PersonDataDto> parents;
 }

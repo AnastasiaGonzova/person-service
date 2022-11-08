@@ -6,6 +6,8 @@ public interface PersonDataService {
 
     PersonData get(Long id);
 
+    PersonData getAndInitialize(Long id);
+
     PersonData create(PersonData personDataJson);
 
     PersonData update(Long id, PersonData personDataJson);

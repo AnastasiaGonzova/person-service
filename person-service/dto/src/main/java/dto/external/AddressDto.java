@@ -5,10 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.MappedCollection;
 
-import java.util.Set;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Getter
 @Setter
@@ -38,7 +38,8 @@ public class AddressDto {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String flat;
 
-    @MappedCollection(idColumn = "contact_id")
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
-    private Set<ContactDto> contacts;
+    @OneToOne
+    @JoinColumn(name = "contact_id")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private ContactDto contact;
 }

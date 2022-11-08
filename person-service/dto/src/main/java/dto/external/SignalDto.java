@@ -7,32 +7,24 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ContactDto {
+public class SignalDto {
 
     @Id
     @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     private Long id;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String phoneNumber;
+    private String description;
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String email;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String profileLink;
-
-    @OneToOne(mappedBy = "contact")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private AddressDto address;
-
-    @OneToOne(mappedBy = "contact")
+    @ManyToOne
+    @JoinColumn(name = "person_data_id")
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private PersonDataDto personData;
 }

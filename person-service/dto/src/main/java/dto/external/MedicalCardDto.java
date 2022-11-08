@@ -5,9 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import java.sql.Date;
+import java.util.Set;
+
+import static lombok.AccessLevel.PRIVATE;
 
 @Getter
 @Setter
@@ -30,4 +35,13 @@ public class MedicalCardDto {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String commentAbout;
+
+    @OneToOne(mappedBy = "medicalCard")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private PersonDataDto personData;
+
+    @Setter(PRIVATE)
+    @OneToMany(mappedBy = "medicalCard")
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
+    private Set<IllnessDto> illnesses;
 }

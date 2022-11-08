@@ -1,9 +1,11 @@
 package core.model;
 
-import lombok.*;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.MappedCollection;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import javax.persistence.*;
 import java.sql.Date;
 import java.util.Set;
 
@@ -12,6 +14,7 @@ import static lombok.AccessLevel.PRIVATE;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name="person_data")
 public class PersonData {
 
     @Id
@@ -22,29 +25,19 @@ public class PersonData {
     private Short age;
     private Character sex;
 
-    @Setter(PRIVATE)
-    @MappedCollection(idColumn = "contact_id")
-    private Set<Contact> contacts;
+    @OneToOne
+    @JoinColumn(name="contact_id")
+    private Contact contact;
 
-    @MappedCollection(idColumn = "medical_card_id")
+    @OneToOne
+    @JoinColumn(name="medical_card_id")
     private MedicalCard medicalCard;
 
-    @Setter(PRIVATE)
-    @MappedCollection(idColumn = "parent_id")
-    private Set<PersonData> parents;
+    @OneToOne(mappedBy = "personData")
+    private User user;
 
-    public void assignContact(Contact contact){
-        this.contacts.add(contact);
-    }
-    public void assignMedicalCard(MedicalCard medicalCard){
-        this.medicalCard = medicalCard;
-    }
-    public void assignParent(PersonData parent){
-        if(this.id != parent.getId()){
-            this.parents.add(parent);
-        }
-        else{
-            throw new IllegalArgumentException("It's one person!");
-        }
-    }
+    @Setter(PRIVATE)
+    @OneToMany
+    @JoinColumn(name="parent_id")
+    private Set<PersonData> parents;
 }

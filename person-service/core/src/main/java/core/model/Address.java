@@ -1,16 +1,18 @@
 package core.model;
 
-import lombok.*;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.MappedCollection;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.Set;
-
-import static lombok.AccessLevel.PRIVATE;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name="address")
 public class Address {
 
     @Id
@@ -22,11 +24,8 @@ public class Address {
     private String building;
     private String flat;
 
-    @Setter(PRIVATE)
-    @MappedCollection(idColumn = "contact_id")
-    private Set<Contact> contacts;
+    @OneToOne
+    @JoinColumn(name = "contact_id")
+    private Contact contact;
 
-    public void assignContact(Contact contact){
-        this.contacts.add(contact);
-    }
 }

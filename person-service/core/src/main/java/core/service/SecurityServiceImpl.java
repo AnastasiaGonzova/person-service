@@ -1,7 +1,7 @@
 package core.service;
 
 import core.api.repository.RoleRepository;
-import core.api.repository.UserRoleRepository;
+import core.api.repository.service.*;
 import core.api.service.*;
 import core.model.*;
 import core.model.UserRole.UserRole;

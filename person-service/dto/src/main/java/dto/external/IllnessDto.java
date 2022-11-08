@@ -5,12 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.MappedCollection;
 
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.sql.Date;
 import java.sql.Timestamp;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -34,7 +34,8 @@ public class IllnessDto {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Date recoveryDt;
 
-    @MappedCollection(idColumn = "medical_card_id")
+    @ManyToOne
+    @JoinColumn(name="medical_card_id")
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
-    private Set<MedicalCardDto> medicalCards;
+    private MedicalCardDto medicalCard;
 }

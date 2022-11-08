@@ -20,28 +20,30 @@ public class MedicalCardServiceImpl implements MedicalCardService {
 
     @Override
     public MedicalCard get(Long id) {
-        return medicalCardRepository.findById(id).orElseThrow();
+        return medicalCardRepository.getById(id);
     }
 
     @Override
     public MedicalCard getAndInitialize(Long id) {
-        MedicalCard medicalCard = medicalCardRepository.findById(id).orElseThrow();
+        MedicalCard medicalCard = medicalCardRepository.getById(id);
         Hibernate.initialize(medicalCard);
+        Hibernate.initialize(medicalCard.getPersonData());
+        Hibernate.initialize(medicalCard.getIllnesses());
         return medicalCard;
     }
 
     @Override
     @Transactional
     public MedicalCard create(MedicalCard medicalCardJson) {
-        return medicalCardRepository.save(medicalCardJson);
+        return medicalCardRepository.saveAndFlush(medicalCardJson);
     }
 
     @Override
     @Transactional
     public MedicalCard update(Long id, MedicalCard medicalCardJson) {
-        MedicalCard updatedMedicalCard = medicalCardRepository.findById(id).orElseThrow();
+        MedicalCard updatedMedicalCard = medicalCardRepository.getById(id);
         modelMapper.map(medicalCardJson, updatedMedicalCard);
-        return medicalCardRepository.save(updatedMedicalCard);
+        return medicalCardRepository.saveAndFlush(updatedMedicalCard);
     }
 
     @Override
