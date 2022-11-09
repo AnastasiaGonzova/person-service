@@ -3,6 +3,7 @@ package core.controller;
 import core.api.service.ContactService;
 import core.model.Contact;
 import dto.external.ContactDto;
+import dto.internal.ContactInternalDto;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
@@ -20,15 +21,16 @@ public class ContactController {
     @GetMapping("/{contact_id}")
     public ContactDto get(@PathVariable(name="contact_id") Long contactId){
         return Optional.of(contactId)
-                .map(contactService::get)
+                .map(contactService::getAndInitialize)
                 .map(current->modelMapper.map(current, ContactDto.class))
                 .orElseThrow();
     }
 
     @PutMapping("/{contact_id}/update")
-    public ContactDto update(@PathVariable(name="contact_id") Long contactId, @RequestBody Contact contactJson){
+    public ContactDto update(@PathVariable(name="contact_id") Long contactId, @RequestBody ContactInternalDto contactJson){
         return Optional.ofNullable(contactJson)
-                .map(toUpdate->contactService.update(contactId, contactJson))
+                .map(current->modelMapper.map(current, Contact.class))
+                .map(toUpdate->contactService.update(contactId, toUpdate))
                 .map(current->modelMapper.map(current, ContactDto.class))
                 .orElseThrow();
     }

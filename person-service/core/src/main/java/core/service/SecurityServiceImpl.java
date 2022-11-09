@@ -1,12 +1,10 @@
 package core.service;
 
 import core.api.repository.RoleRepository;
-import core.api.repository.service.*;
 import core.api.service.*;
 import core.model.*;
-import core.model.UserRole.UserRole;
-import core.model.UserRole.UserRoleKey;
 import dto.internal.LoginRequest;
+import dto.internal.SignUpRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -14,8 +12,8 @@ import org.springframework.stereotype.Service;
 import java.sql.Date;
 import java.time.Clock;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Optional;
-import java.util.Random;
 
 @Service
 @AllArgsConstructor
@@ -27,7 +25,6 @@ public class SecurityServiceImpl implements SecurityService {
     private MedicalCardService medicalCardService;
     private ContactService contactService;
     private RoleRepository roleRepository;
-    private UserRoleRepository userRoleRepository;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
@@ -42,51 +39,40 @@ public class SecurityServiceImpl implements SecurityService {
     }
 
     @Override
-    public String sighUp(PersonData personDataJson, User userJson, Contact contact) {
-        Random random = new Random();
+    public String sighUp(SignUpRequest signUpRequest) {
 
-        userJson.setPassword(bCryptPasswordEncoder.encode(userJson.getPassword()));
-        userJson.setPersonData(personDataJson);
-        Long randomId = null;
-        if(personDataJson.getId() == null){
+        PersonData personData = new PersonData();
+        Contact contact = new Contact();
+        User user = new User();
 
-            do{
-                randomId = random.nextLong();
+        MedicalCard medicalCard = new MedicalCard( null, "REG", "H",
+                Date.valueOf(LocalDate.now(Clock.systemDefaultZone())), "", null, new HashSet<>());
 
-            }while(personDataService.get(randomId) == null);
+        contact.setPhoneNumber(signUpRequest.getPhoneNumber());
+        contact.setEmail(signUpRequest.getEmail());
+        contact.setProfileLink(signUpRequest.getProfileLink());
 
-            personDataJson.setId(randomId);
-        }
-        do{
-            randomId = random.nextLong();
-        }while (contactService.get(randomId) == null);
+        personData.setLastName(signUpRequest.getLastName());
+        personData.setFirstName(signUpRequest.getFirstName());
+        personData.setBirthDt(signUpRequest.getBirthDt());
+        personData.setAge(signUpRequest.getAge());
+        personData.setSex(signUpRequest.getSex());
+        personData.setContact(contact);
+        personData.setMedicalCard(medicalCard);
 
-        contact.setId(randomId);
-        personDataJson.getContacts().add(contact);
 
-        do{
-            randomId = random.nextLong();
-        }while (medicalCardService.get(randomId) == null);
-
-        MedicalCard medicalCard = new MedicalCard(
-                randomId, "REG", "H",
-                Date.valueOf(LocalDate.now(Clock.systemDefaultZone())), "");
-        personDataJson.setMedicalCard(medicalCard);
+        user.setUsername(signUpRequest.getUsername());
+        user.setPassword(bCryptPasswordEncoder.encode(signUpRequest.getPassword()));
+        user.setPersonData(personData);
 
         final Role role = roleRepository.findByRoleName("USER");
-        final UserRoleKey userRoleKey = new UserRoleKey(userJson.getId(), role.getId());
-        UserRole userRole = new UserRole();
-        userRole.setId(userRoleKey);
-        userRole.getUsers().add(userJson);
-        userRole.getRoles().add(role);
-        userJson.getRoles().add(userRole);
-        role.getUsers().add(userRole);
+        user.getRoles().add(role);
+        role.getUsers().add(user);
 
-        userRoleRepository.save(userRole);
         medicalCardService.create(medicalCard);
         contactService.create(contact);
-        userService.create(userJson);
-        personDataService.create(personDataJson);
-        return tokenService.generateToken(userJson);
+        userService.create(user);
+        personDataService.create(personData);
+        return tokenService.generateToken(user);
     }
 }

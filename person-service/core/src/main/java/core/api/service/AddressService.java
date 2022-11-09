@@ -14,4 +14,6 @@ public interface AddressService {
     void delete(Long id);
 
     Address assignContact(Long addressId, Long contactId);
+
+    Address removeContact(Long addressId, Long contactId);
 }

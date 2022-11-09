@@ -11,7 +11,7 @@
         </comment>
 
         <insert tableName="medical_card">
-            <column name="id" value="54"/>
+            <column name="id" value="2"/>
             <column name="client_status" value="REG"/>
             <column name="med_status" value="H"/>
             <column name="registry_dt" value="2012-05-12"/>
@@ -19,7 +19,7 @@
         </insert>
 
         <insert tableName="medical_card">
-            <column name="id" value="59"/>
+            <column name="id" value="3"/>
             <column name="client_status" value="REG"/>
             <column name="med_status" value="H"/>
             <column name="registry_dt" value="2001-06-05"/>
@@ -27,7 +27,7 @@
         </insert>
 
         <insert tableName="medical_card">
-            <column name="id" value="42"/>
+            <column name="id" value="4"/>
             <column name="client_status" value="REG"/>
             <column name="med_status" value="UH"/>
             <column name="registry_dt" value="2019-12-04"/>
@@ -35,14 +35,14 @@
         </insert>
 
         <insert tableName="medical_card">
-            <column name="id" value="3"/>
+            <column name="id" value="5"/>
             <column name="client_status" value="UNKN"/>
             <column name="registry_dt" value="2010-04-05"/>
             <column name="comment_about" value="adams proportion dimensions biol chancellor"/>
         </insert>
 
         <insert tableName="medical_card">
-            <column name="id" value="47"/>
+            <column name="id" value="6"/>
             <column name="client_status" value="UNREG"/>
             <column name="med_status" value="UH"/>
             <column name="registry_dt" value="2005-11-03"/>
@@ -50,7 +50,7 @@
         </insert>
 
         <insert tableName="medical_card">
-            <column name="id" value="73"/>
+            <column name="id" value="7"/>
             <column name="client_status" value="REG"/>
             <column name="med_status" value="H"/>
             <column name="registry_dt" value="2007-08-24"/>
@@ -58,7 +58,7 @@
         </insert>
 
         <insert tableName="medical_card">
-            <column name="id" value="31"/>
+            <column name="id" value="8"/>
             <column name="client_status" value="UNREG"/>
             <column name="med_status" value="H"/>
             <column name="registry_dt" value="2021-01-31"/>
@@ -66,7 +66,7 @@
         </insert>
 
         <insert tableName="medical_card">
-            <column name="id" value="34"/>
+            <column name="id" value="9"/>
             <column name="client_status" value="REG"/>
             <column name="med_status" value="UH"/>
             <column name="registry_dt" value="2013-05-04"/>
@@ -74,7 +74,7 @@
         </insert>
 
         <insert tableName="medical_card">
-            <column name="id" value="78"/>
+            <column name="id" value="10"/>
             <column name="client_status" value="UNREG"/>
             <column name="med_status" value="H"/>
             <column name="registry_dt" value="2014-08-23"/>
@@ -82,7 +82,7 @@
         </insert>
 
         <insert tableName="medical_card">
-            <column name="id" value="81"/>
+            <column name="id" value="11"/>
             <column name="client_status" value="REG"/>
             <column name="med_status" value="H"/>
             <column name="registry_dt" value="2016-08-23"/>
@@ -92,15 +92,15 @@
 
 
         <insert tableName="illness">
-            <column name="id" value="79"/>
-            <column name="medical_card_id" value="3"/>
+            <column name="id" value="1"/>
+            <column name="medical_card_id" value="5"/>
             <column name="type_id" value="12"/>
             <column name="appearance_dttm" value="2004-10-19 10:23:54"/>
         </insert>
 
         <insert tableName="illness">
-            <column name="id" value="56"/>
-            <column name="medical_card_id" value="47"/>
+            <column name="id" value="2"/>
+            <column name="medical_card_id" value="6"/>
             <column name="type_id" value="10"/>
             <column name="appearance_dttm" value="2012-01-21 10:23:54"/>
         </insert>
@@ -108,70 +108,70 @@
 
 
         <insert tableName="contact">
-            <column name="id" value="97"/>
+            <column name="id" value="2"/>
             <column name="phone_number" value="+7-954-738-89-63"/>
             <column name="email" value="dmitriy10101970@mail.ru"/>
         </insert>
 
         <insert tableName="contact">
-            <column name="id" value="40"/>
+            <column name="id" value="3"/>
             <column name="phone_number" value="+7-917-189-15-70"/>
             <column name="email" value="pavel04051992@ya.ru"/>
         </insert>
 
         <insert tableName="contact">
-            <column name="id" value="6"/>
+            <column name="id" value="4"/>
             <column name="phone_number" value="+7-954-526-82-94"/>
             <column name="email" value="nadejda46@ya.ru"/>
         </insert>
 
         <insert tableName="contact">
-            <column name="id" value="76"/>
-            <column name="phone_number" value="+7-945-745-52-49"/>
-            <column name="email" value="sergey.nikulaichev@yandex.ru"/>
+            <column name="id" value="5"/>
+            <column name="phone_number" value="+7-960-389-40-67"/>
+            <column name="email" value="valeriya1967@gmail.com"/>
         </insert>
 
         <insert tableName="contact">
-            <column name="id" value="11"/>
+            <column name="id" value="6"/>
             <column name="phone_number" value="+7-974-310-51-66"/>
             <column name="email" value="lev21@outlook.com"/>
         </insert>
 
         <insert tableName="contact">
-            <column name="id" value="38"/>
+            <column name="id" value="7"/>
             <column name="phone_number" value="+7-966-667-57-30"/>
             <column name="email" value="viktoriya24@hotmail.com"/>
         </insert>
 
         <insert tableName="contact">
-            <column name="id" value="83"/>
+            <column name="id" value="8"/>
             <column name="phone_number" value="+7-982-771-77-21"/>
             <column name="email" value="roman.koshkov@rambler.ru"/>
         </insert>
 
         <insert tableName="contact">
-            <column name="id" value="66"/>
+            <column name="id" value="9"/>
             <column name="phone_number" value="+7-975-462-15-89"/>
             <column name="email" value="karina6991@rambler.ru"/>
         </insert>
 
         <insert tableName="contact">
-            <column name="id" value="8"/>
+            <column name="id" value="10"/>
             <column name="phone_number" value="+7-980-152-88-41"/>
             <column name="email" value="yuliya.radygina@outlook.com"/>
         </insert>
 
         <insert tableName="contact">
-            <column name="id" value="59"/>
-            <column name="phone_number" value="+7-960-389-40-67"/>
-            <column name="email" value="valeriya1967@gmail.com"/>
+            <column name="id" value="11"/>
+            <column name="phone_number" value="+7-945-745-52-49"/>
+            <column name="email" value="sergey.nikulaichev@yandex.ru"/>
         </insert>
 
 
 
         <insert tableName="address">
-            <column name="id" value="9"/>
-            <column name="contact_id" value="97"/>
+            <column name="id" value="1"/>
+            <column name="contact_id" value="2"/>
             <column name="country_id" value="7"/>
             <column name="city" value="Лотошино"/>
             <column name="street" value="пл. Славы"/>
@@ -180,8 +180,8 @@
         </insert>
 
         <insert tableName="address">
-            <column name="id" value="94"/>
-            <column name="contact_id" value="11"/>
+            <column name="id" value="2"/>
+            <column name="contact_id" value="6"/>
             <column name="country_id" value="7"/>
             <column name="city" value="Можайск"/>
             <column name="street" value="пер. Косиора"/>
@@ -190,8 +190,8 @@
         </insert>
 
         <insert tableName="address">
-            <column name="id" value="80"/>
-            <column name="contact_id" value="83"/>
+            <column name="id" value="3"/>
+            <column name="contact_id" value="8"/>
             <column name="country_id" value="7"/>
             <column name="city" value="Одинцово"/>
             <column name="street" value="пер. Славы"/>
@@ -200,8 +200,8 @@
         </insert>
 
         <insert tableName="address">
-            <column name="id" value="31"/>
-            <column name="contact_id" value="8"/>
+            <column name="id" value="4"/>
+            <column name="contact_id" value="10"/>
             <column name="country_id" value="7"/>
             <column name="city" value="Подольск"/>
             <column name="street" value="ул. Ладыгина"/>
@@ -210,8 +210,8 @@
         </insert>
 
         <insert tableName="address">
-            <column name="id" value="7"/>
-            <column name="contact_id" value="59"/>
+            <column name="id" value="5"/>
+            <column name="contact_id" value="11"/>
             <column name="country_id" value="7"/>
             <column name="city" value="Нижний Новгород"/>
             <column name="street" value="ул. Комсомольская"/>
@@ -222,34 +222,34 @@
 
 
         <insert tableName="person_data">
-            <column name="id" value="84"/>
+            <column name="id" value="2"/>
             <column name="last_name" value="Кожевников"/>
             <column name="first_name" value="Дмитрий"/>
             <column name="birth_dt" value="1970-10-10"/>
             <column name="sex" value="М"/>
-            <column name="contact_id" value="97"/>
-            <column name="medical_card_id" value="54"/>
+            <column name="contact_id" value="2"/>
+            <column name="medical_card_id" value="2"/>
         </insert>
 
         <insert tableName="person_data">
-            <column name="id" value="15"/>
+            <column name="id" value="3"/>
             <column name="last_name" value="Пищальников"/>
             <column name="first_name" value="Павел"/>
             <column name="birth_dt" value="1992-05-04"/>
             <column name="sex" value="М"/>
-            <column name="contact_id" value="40"/>
-            <column name="medical_card_id" value="59"/>
-            <column name="parent_id" value="84"/>
+            <column name="contact_id" value="3"/>
+            <column name="medical_card_id" value="3"/>
+            <column name="parent_id" value="2"/>
         </insert>
 
         <insert tableName="person_data">
-            <column name="id" value="92"/>
+            <column name="id" value="4"/>
             <column name="last_name" value="Волобуева"/>
             <column name="first_name" value="Надежда"/>
             <column name="birth_dt" value="1980-09-13"/>
             <column name="sex" value="Ж"/>
-            <column name="contact_id" value="6"/>
-            <column name="medical_card_id" value="42"/>
+            <column name="contact_id" value="4"/>
+            <column name="medical_card_id" value="4"/>
         </insert>
 
         <insert tableName="person_data">
@@ -258,71 +258,195 @@
             <column name="first_name" value="Валерия"/>
             <column name="birth_dt" value="1967-08-13"/>
             <column name="sex" value="Ж"/>
-            <column name="contact_id" value="59"/>
-            <column name="medical_card_id" value="81"/>
+            <column name="contact_id" value="5"/>
+            <column name="medical_card_id" value="5"/>
         </insert>
 
         <insert tableName="person_data">
-            <column name="id" value="95"/>
-            <column name="last_name" value="Никулаичев"/>
-            <column name="first_name" value="Сергей"/>
-            <column name="birth_dt" value="1996-06-06"/>
-            <column name="sex" value="М"/>
-            <column name="contact_id" value="76"/>
-            <column name="medical_card_id" value="3"/>
-            <column name="parent_id" value="5"/>
-        </insert>
-
-        <insert tableName="person_data">
-            <column name="id" value="13"/>
+            <column name="id" value="6"/>
             <column name="last_name" value="Каналин"/>
             <column name="first_name" value="Лев"/>
             <column name="birth_dt" value="1977-11-23"/>
             <column name="sex" value="М"/>
-            <column name="contact_id" value="11"/>
-            <column name="medical_card_id" value="47"/>
+            <column name="contact_id" value="6"/>
+            <column name="medical_card_id" value="6"/>
         </insert>
 
         <insert tableName="person_data">
-            <column name="id" value="91"/>
+            <column name="id" value="7"/>
             <column name="last_name" value="Самохина"/>
             <column name="first_name" value="Виктория"/>
             <column name="birth_dt" value="1995-12-19"/>
             <column name="sex" value="Ж"/>
-            <column name="contact_id" value="38"/>
-            <column name="medical_card_id" value="73"/>
-            <column name="parent_id" value="84"/>
+            <column name="contact_id" value="7"/>
+            <column name="medical_card_id" value="7"/>
+            <column name="parent_id" value="2"/>
         </insert>
 
         <insert tableName="person_data">
-            <column name="id" value="31"/>
+            <column name="id" value="8"/>
             <column name="last_name" value="Кошков"/>
             <column name="first_name" value="Роман"/>
             <column name="birth_dt" value="1994-10-01"/>
             <column name="sex" value="М"/>
-            <column name="contact_id" value="83"/>
-            <column name="medical_card_id" value="31"/>
+            <column name="contact_id" value="8"/>
+            <column name="medical_card_id" value="8"/>
         </insert>
 
         <insert tableName="person_data">
-            <column name="id" value="22"/>
+            <column name="id" value="9"/>
             <column name="last_name" value="Климова"/>
             <column name="first_name" value="Карина"/>
             <column name="birth_dt" value="1964-10-01"/>
             <column name="sex" value="Ж"/>
-            <column name="contact_id" value="66"/>
-            <column name="medical_card_id" value="34"/>
+            <column name="contact_id" value="9"/>
+            <column name="medical_card_id" value="9"/>
         </insert>
 
         <insert tableName="person_data">
-            <column name="id" value="47"/>
+            <column name="id" value="10"/>
             <column name="last_name" value="Радыгина"/>
             <column name="first_name" value="Юлия"/>
             <column name="birth_dt" value="1996-11-14"/>
             <column name="sex" value="Ж"/>
-            <column name="contact_id" value="8"/>
-            <column name="medical_card_id" value="78"/>
-            <column name="parent_id" value="13"/>
+            <column name="contact_id" value="10"/>
+            <column name="medical_card_id" value="10"/>
+            <column name="parent_id" value="6"/>
+        </insert>
+
+        <insert tableName="person_data">
+            <column name="id" value="11"/>
+            <column name="last_name" value="Никулаичев"/>
+            <column name="first_name" value="Сергей"/>
+            <column name="birth_dt" value="1996-06-06"/>
+            <column name="sex" value="М"/>
+            <column name="contact_id" value="11"/>
+            <column name="medical_card_id" value="11"/>
+            <column name="parent_id" value="5"/>
+        </insert>
+
+
+
+        <insert tableName="user_data">
+            <column name="id" value="2"/>
+            <column name="username" value="dmitriy10101970"/>
+            <column name="password" value="$2a$10$wimroGR/A1NHQjkzkz9Qru.oe9mm5sWQh0VyrvhA2oSAXrcFo.Qt2"/>
+            <column name="person_data_id" value="2"/>
+        </insert>
+
+        <insert tableName="user_data">
+            <column name="id" value="3"/>
+            <column name="username" value="pavel04051992"/>
+            <column name="password" value="$2a$10$mEFDkUJ781cdAFY4d2aJGewVl8h99tGLl2w0PiSz3zm/DxFdYwyeG"/>
+            <column name="person_data_id" value="3"/>
+        </insert>
+
+        <insert tableName="user_data">
+            <column name="id" value="4"/>
+            <column name="username" value="nadejda46"/>
+            <column name="password" value="$2a$10$Lbz2EUrhhbpxSRBRgTQdpuAyIecRhvNMEWjT1mt3a1VjsSxEpbB7a"/>
+            <column name="person_data_id" value="4"/>
+        </insert>
+
+        <insert tableName="user_data">
+            <column name="id" value="5"/>
+            <column name="username" value="valeriya1967"/>
+            <column name="password" value="$2a$10$BSdUKjdwc30MhH/2ACLUXuP.G/zHLcKIB.GoBW3W/Yy80G64ScnI."/>
+            <column name="person_data_id" value="5"/>
+        </insert>
+
+        <insert tableName="user_data">
+            <column name="id" value="6"/>
+            <column name="username" value="lev21"/>
+            <column name="password" value="$2a$10$QBGT57zwZjb/NEVlzEKkgOcbmJVD1KZMsp1FYFOsufLUx5BUBKDK."/>
+            <column name="person_data_id" value="6"/>
+        </insert>
+
+        <insert tableName="user_data">
+            <column name="id" value="7"/>
+            <column name="username" value="viktoriya24"/>
+            <column name="password" value="$2a$10$Vwnxt6ZZa0B9ifI4Zu3s0e5YtIKonKbA6hYtTbKT8ZYlevHglo11O"/>
+            <column name="person_data_id" value="7"/>
+        </insert>
+
+        <insert tableName="user_data">
+            <column name="id" value="8"/>
+            <column name="username" value="roman.koshkov"/>
+            <column name="password" value="$2a$10$IW12zTbJiyWBiybZB91VeuTJ1E54lQBdnNCE.Ejkg3kYekhulAJy2"/>
+            <column name="person_data_id" value="8"/>
+        </insert>
+
+        <insert tableName="user_data">
+            <column name="id" value="9"/>
+            <column name="username" value="karina6991"/>
+            <column name="password" value="$2a$10$6zjuv7LzxxGohnqrIuOTC.jvdSKTEivkF4iErRkp102MDkkNi0qUq"/>
+            <column name="person_data_id" value="9"/>
+        </insert>
+
+        <insert tableName="user_data">
+            <column name="id" value="10"/>
+            <column name="username" value="yuliya.radygina"/>
+            <column name="password" value="$2a$10$75/AqUNKrg6.vLDNPEWeLu23jkWfEjLciB6hh1QBw1dPuJFAzVuta"/>
+            <column name="person_data_id" value="10"/>
+        </insert>
+
+        <insert tableName="user_data">
+            <column name="id" value="11"/>
+            <column name="username" value="sergey.nikulaichev"/>
+            <column name="password" value="$2a$10$OyS8Qc9UYskrS/fD1USY.O.YGWjGk8p2iepWUZ3uJHBDgsfFpy/Ae"/>
+            <column name="person_data_id" value="11"/>
+        </insert>
+
+
+
+        <insert tableName="user_role">
+            <column name="user_id" value="2"/>
+            <column name="role_id" value="2"/>
+        </insert>
+
+        <insert tableName="user_role">
+            <column name="user_id" value="3"/>
+            <column name="role_id" value="2"/>
+        </insert>
+
+        <insert tableName="user_role">
+            <column name="user_id" value="4"/>
+            <column name="role_id" value="2"/>
+        </insert>
+
+        <insert tableName="user_role">
+            <column name="user_id" value="5"/>
+            <column name="role_id" value="2"/>
+        </insert>
+
+        <insert tableName="user_role">
+            <column name="user_id" value="6"/>
+            <column name="role_id" value="2"/>
+        </insert>
+
+        <insert tableName="user_role">
+            <column name="user_id" value="7"/>
+            <column name="role_id" value="2"/>
+        </insert>
+
+        <insert tableName="user_role">
+            <column name="user_id" value="8"/>
+            <column name="role_id" value="2"/>
+        </insert>
+
+        <insert tableName="user_role">
+            <column name="user_id" value="9"/>
+            <column name="role_id" value="2"/>
+        </insert>
+
+        <insert tableName="user_role">
+            <column name="user_id" value="10"/>
+            <column name="role_id" value="2"/>
+        </insert>
+
+        <insert tableName="user_role">
+            <column name="user_id" value="11"/>
+            <column name="role_id" value="2"/>
         </insert>
 
     </changeSet>

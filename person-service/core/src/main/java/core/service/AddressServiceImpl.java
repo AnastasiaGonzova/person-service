@@ -56,10 +56,18 @@ public class AddressServiceImpl implements AddressService {
     @Override
     @Transactional
     public Address assignContact(Long addressId, Long contactId) {
-        final Address address = addressRepository.getById(addressId);
-        final Contact contact = contactService.get(contactId);
-        //address.assignContact(contact);
-        //addressRepository.assignContact(addressId, contactId);
-        return address;
+        Address address = addressRepository.getById(addressId);
+        Contact contact = contactService.get(contactId);
+        address.assignContact(contact);
+        return addressRepository.saveAndFlush(address);
+    }
+
+    @Override
+    @Transactional
+    public Address removeContact(Long addressId, Long contactId) {
+        Address address = addressRepository.getById(addressId);
+        Contact contact = contactService.get(contactId);
+        address.removeContact(contact);
+        return addressRepository.saveAndFlush(address);
     }
 }

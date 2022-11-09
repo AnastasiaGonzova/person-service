@@ -4,9 +4,10 @@ import core.model.Contact;
 import core.model.PersonData;
 import core.model.User;
 import dto.internal.LoginRequest;
+import dto.internal.SignUpRequest;
 
 public interface SecurityService {
 
     String login(LoginRequest loginRequest);
-    String sighUp(PersonData personDataJson, User userJson, Contact contact);
+    String sighUp(SignUpRequest signUpRequest);
 }

@@ -11,7 +11,7 @@
         </comment>
 
         <createTable tableName="medical_card">
-            <column name="id" type="BIGINT">
+            <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true" unique="true" primaryKeyName="pk_medical_card"/>
             </column>
             <column name="client_status" type="CHAR(5)"/>
@@ -23,7 +23,7 @@
         </createTable>
 
         <createTable tableName="illness">
-            <column name="id" type="BIGINT">
+            <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true" unique="true" primaryKeyName="pk_illness"/>
             </column>
             <column name="medical_card_id" type="BIGINT">
@@ -38,7 +38,7 @@
         </createTable>
 
         <createTable tableName="contact">
-            <column name="id" type="BIGINT">
+            <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true" unique="true" primaryKeyName="pk_contact"/>
             </column>
             <column name="phone_number" type="VARCHAR(32)">
@@ -49,7 +49,7 @@
         </createTable>
 
         <createTable tableName="address">
-            <column name="id" type="BIGINT">
+            <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true" unique="true" primaryKeyName="pk_address"/>
             </column>
             <column name="contact_id" type="BIGINT">
@@ -72,7 +72,7 @@
         </createTable>
 
         <createTable tableName="person_data">
-            <column name="id" type="BIGINT">
+            <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true" unique="true" primaryKeyName="pk_person_data"/>
             </column>
             <column name="last_name" type="VARCHAR(255)">
@@ -94,6 +94,39 @@
             </column>
             <column name="parent_id" type="BIGINT">
                 <constraints references="person_data(id)" foreignKeyName="fk_person_parent" checkConstraint="parent_id != id"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="user_data">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" unique="true" primaryKeyName="pk_user_data"/>
+            </column>
+            <column name="username" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true" checkConstraint="username >= 4"/>
+            </column>
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true" checkConstraint="password >= 8"/>
+            </column>
+            <column name="person_data_id" type="BIGINT">
+                <constraints nullable="false" unique="true" references="person_data(id)" foreignKeyName="fk_person_data_user_data"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="role">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" unique="true" primaryKeyName="pk_role"/>
+            </column>
+            <column name="role_name" type="VARCHAR(64)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="user_role">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_role" references="user_data(id)" foreignKeyName="fk_user"/>
+            </column>
+            <column name="role_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_role" references="role(id)" foreignKeyName="fk_role"/>
             </column>
         </createTable>
 

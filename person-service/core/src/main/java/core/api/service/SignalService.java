@@ -9,9 +9,9 @@ public interface SignalService {
 
     Signal getAndInitialize(Long id);
 
-    Signal create(Signal signalJson);
+    Signal create(Signal signalJson, Long personId);
 
     Signal update(Long id, Signal signalJson);
 
-    void delete(Long id);
+    void delete(Long signalId, Long personId);
 }

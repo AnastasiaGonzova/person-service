@@ -1,11 +1,7 @@
 package core.service;
 
 import core.api.repository.PersonDataRepository;
-import core.api.service.ContactService;
-import core.api.service.MedicalCardService;
 import core.api.service.PersonDataService;
-import core.model.Contact;
-import core.model.MedicalCard;
 import core.model.PersonData;
 import lombok.AllArgsConstructor;
 import org.hibernate.Hibernate;
@@ -19,8 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class PersonDataServiceImpl implements PersonDataService {
 
     private PersonDataRepository personDataRepository;
-    private ContactService contactService;
-    private MedicalCardService medicalCardService;
 
     private ModelMapper modelMapper;
 
@@ -62,31 +56,19 @@ public class PersonDataServiceImpl implements PersonDataService {
 
     @Override
     @Transactional
-    public PersonData assignContact(Long personId, Long contactId) {
-        final Contact contact = contactService.get(contactId);
-        final PersonData personData = personDataRepository.getById(personId);
-        //personData.assignContact(contact);
-        //personDataRepository.assignContact(personId, contactId);
-        return personData;
-    }
-
-    @Override
-    @Transactional
-    public PersonData assignMedicalCard(Long personId, Long medicalCardId) {
-        final MedicalCard medicalCard = medicalCardService.get(medicalCardId);
-        final PersonData personData = personDataRepository.getById(personId);
-        //personData.assignMedicalCard(medicalCard);
-        //personDataRepository.assignMedicalCard(personId, medicalCardId);
-        return personData;
-    }
-
-    @Override
-    @Transactional
     public PersonData assignParent(Long personId, Long parentId) {
-        final PersonData personData = personDataRepository.getById(personId);
+        PersonData personData = personDataRepository.getById(personId);
         final PersonData parentData = personDataRepository.getById(parentId);
-        //personData.assignParent(parentData);
-        //personDataRepository.assignParent(personId, parentId);
-        return personData;
+        personData.assignParent(parentData);
+        return personDataRepository.saveAndFlush(personData);
+    }
+
+    @Override
+    @Transactional
+    public PersonData removeParent(Long personId, Long parentId) {
+        PersonData personData = personDataRepository.getById(personId);
+        final PersonData parentData = personDataRepository.getById(parentId);
+        personData.removeParent(parentData);
+        return personDataRepository.saveAndFlush(personData);
     }
 }

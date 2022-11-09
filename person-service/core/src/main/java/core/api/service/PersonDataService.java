@@ -14,9 +14,7 @@ public interface PersonDataService {
 
     void delete(Long id);
 
-    PersonData assignContact(Long personId, Long contactId);
-
-    PersonData assignMedicalCard(Long personId, Long medicalCardId);
-
     PersonData assignParent(Long personId, Long parentId);
+
+    PersonData removeParent(Long personId, Long parentId);
 }

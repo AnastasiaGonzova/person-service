@@ -1,7 +1,9 @@
 package core.service;
 
 import core.api.repository.MedicalCardRepository;
+import core.api.service.IllnessService;
 import core.api.service.MedicalCardService;
+import core.model.Illness;
 import core.model.MedicalCard;
 import lombok.AllArgsConstructor;
 import org.hibernate.Hibernate;
@@ -15,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class MedicalCardServiceImpl implements MedicalCardService {
 
     private MedicalCardRepository medicalCardRepository;
-
+    private IllnessService illnessService;
     private ModelMapper modelMapper;
 
     @Override
@@ -50,5 +52,14 @@ public class MedicalCardServiceImpl implements MedicalCardService {
     @Transactional
     public void delete(Long id) {
         medicalCardRepository.deleteById(id);
+    }
+
+    @Override
+    @Transactional
+    public MedicalCard assignIllness(Long medicalCardId, Long illnessId){
+        MedicalCard medicalCard = medicalCardRepository.getById(medicalCardId);
+        Illness illness = illnessService.get(illnessId);
+        medicalCard.assignIllness(illness);
+        return medicalCardRepository.saveAndFlush(medicalCard);
     }
 }

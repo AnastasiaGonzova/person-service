@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet id="init-admin" author="Gonza">
+        <comment>
+            Установка первичных данных ддя администратора и роли
+        </comment>
+
+        <insert tableName="role">
+            <column name="id" value="1"/>
+            <column name="role_name" value="ADMIN"/>
+        </insert>
+
+        <insert tableName="role">
+            <column name="id" value="2"/>
+            <column name="role_name" value="USER"/>
+        </insert>
+
+        <insert tableName="medical_card">
+            <column name="id" value="1"/>
+            <column name="client_status" value="REG"/>
+            <column name="med_status" value="H"/>
+            <column name="registry_dt" value="1900-01-01"/>
+            <column name="comment_about" value="admin"/>
+        </insert>
+
+        <insert tableName="contact">
+            <column name="id" value="1"/>
+            <column name="phone_number" value="+7-999-999-99-99"/>
+            <column name="email" value="admin@mail.ru"/>
+        </insert>
+
+        <insert tableName="person_data">
+            <column name="id" value="1"/>
+            <column name="last_name" value="Admin"/>
+            <column name="first_name" value="Admin"/>
+            <column name="birth_dt" value="1900-01-01"/>
+            <column name="sex" value="Ж"/>
+            <column name="contact_id" value="1"/>
+            <column name="medical_card_id" value="1"/>
+        </insert>
+
+        <insert tableName="user_data">
+            <column name="id" value="1"/>
+            <column name="username" value="admin"/>
+            <column name="password" value="admin"/>
+            <column name="person_data_id" value="1"/>
+        </insert>
+
+        <insert tableName="user_role">
+            <column name="user_id" value="1"/>
+            <column name="role_id" value="1"/>
+        </insert>
+
+        <insert tableName="user_role">
+            <column name="user_id" value="1"/>
+            <column name="role_id" value="2"/>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

@@ -3,6 +3,7 @@ package core.controller;
 import core.api.service.IllnessService;
 import core.model.Illness;
 import dto.external.IllnessDto;
+import dto.internal.IllnessInternalDto;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
@@ -26,17 +27,19 @@ public class IllnessController {
     }
 
     @PostMapping("/admin")
-    public IllnessDto create(@RequestBody Illness illnessJson){
+    public IllnessDto create(@RequestBody IllnessInternalDto illnessJson){
         return Optional.ofNullable(illnessJson)
+                .map(current->modelMapper.map(current, Illness.class))
                 .map(illnessService::create)
                 .map(current->modelMapper.map(current, IllnessDto.class))
                 .orElseThrow();
     }
 
     @PutMapping("/{illness_id}/update")
-    public IllnessDto update(@PathVariable(name="illness_id") Long illnessId, @RequestBody Illness illnessJson){
+    public IllnessDto update(@PathVariable(name="illness_id") Long illnessId, @RequestBody IllnessInternalDto illnessJson){
         return Optional.ofNullable(illnessJson)
-                .map(toUpdate->illnessService.update(illnessId, illnessJson))
+                .map(current->modelMapper.map(current, Illness.class))
+                .map(toUpdate->illnessService.update(illnessId, toUpdate))
                 .map(current->modelMapper.map(current, IllnessDto.class))
                 .orElseThrow();
     }
@@ -44,13 +47,5 @@ public class IllnessController {
     @DeleteMapping("/{illness_id}/admin/delete")
     public void delete(@PathVariable(name="illness_id") Long illnessId){
         illnessService.delete(illnessId);
-    }
-
-    @PostMapping("/{illness_id}/admin/medical_cards/{medical_card_id}")
-    public IllnessDto assignMedicalCard(@PathVariable(name="illness_id") Long illnessId, @PathVariable(name="medical_card_id") Long medicalCardId){
-        return Optional.of(illnessId)
-                .map(current->illnessService.assignMedicalCard(medicalCardId, illnessId))
-                .map(current->modelMapper.map(current, IllnessDto.class))
-                .orElseThrow();
     }
 }

@@ -14,5 +14,4 @@ public interface IllnessService {
 
     void delete(Long id);
 
-    Illness assignMedicalCard(Long medicalCardId, Long illnessId);
 }

@@ -12,4 +12,6 @@ public interface MedicalCardService {
     MedicalCard update(Long id, MedicalCard medicalCardJson);
 
     void delete(Long id);
+
+    MedicalCard assignIllness(Long medicalCardId, Long illnessId);
 }

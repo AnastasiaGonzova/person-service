@@ -6,9 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Set;
 
 import static lombok.AccessLevel.PRIVATE;
@@ -16,10 +14,12 @@ import static lombok.AccessLevel.PRIVATE;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 @Table(name = "role")
 public class Role implements GrantedAuthority {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String roleName;
 

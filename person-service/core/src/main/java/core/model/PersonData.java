@@ -14,10 +14,12 @@ import static lombok.AccessLevel.PRIVATE;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 @Table(name="person_data")
 public class PersonData {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String lastName;
     private String firstName;
@@ -40,4 +42,17 @@ public class PersonData {
     @OneToMany
     @JoinColumn(name="parent_id")
     private Set<PersonData> parents;
+
+    @Setter(PRIVATE)
+    @OneToMany
+    @JoinColumn(name="signal_id")
+    private Set<Signal> signals;
+
+    public void assignParent(PersonData parent){
+        this.parents.add(parent);
+    }
+
+    public void removeParent(PersonData parent){
+        this.parents.remove(parent);
+    }
 }

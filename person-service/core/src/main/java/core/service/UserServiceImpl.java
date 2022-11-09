@@ -1,15 +1,19 @@
 package core.service;
 
-import core.api.repository.RoleRepository;
 import core.api.repository.UserRepository;
 import core.api.service.UserService;
 import core.model.User;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 @AllArgsConstructor
@@ -17,8 +21,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
-
-    private RoleRepository roleRepository;
 
     private ModelMapper modelMapper;
 
@@ -55,13 +57,11 @@ public class UserServiceImpl implements UserService {
             throw new UsernameNotFoundException(username);
         }
 
-        /*Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        user.getRoles().stream().forEach(userRole->
+        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+        user.getRoles().stream().forEach(role->
                 grantedAuthorities.add(
-                        new SimpleGrantedAuthority(
-                                roleRepository.findById(userRole.getId().getRoleId()).orElseThrow().getRoleName())));
+                        new SimpleGrantedAuthority(role.getRoleName())));
 
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);*/
-        return null;
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
     }
 }

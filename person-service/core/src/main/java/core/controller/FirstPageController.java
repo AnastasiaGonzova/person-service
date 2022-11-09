@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class FirstPageController {
 
-    @GetMapping()
+    @GetMapping("/")
     public String greeting(){
         return "Welcome!";
     }

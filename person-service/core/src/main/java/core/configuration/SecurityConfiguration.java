@@ -2,11 +2,10 @@ package core.configuration;
 
 import core.api.service.UserService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -23,34 +22,38 @@ public class SecurityConfiguration  extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    @Override
+   @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity
-                .authorizeRequests()
-                    .antMatchers("/signUp").not().fullyAuthenticated()
-                    //Доступ только для пользователей с ролью Администратор
-                    .antMatchers("/admin/**").hasRole("ADMIN")
-                    .antMatchers("/").permitAll()
-                .anyRequest().authenticated()
-                    .and()
-                //Настройка для входа в систему
-                .formLogin()
+       httpSecurity
+               .authorizeRequests()
+               .antMatchers("/sign-up").not().fullyAuthenticated()
+               //Доступ только для пользователей с ролью Администратор
+               .antMatchers("/admin/**").hasRole("ADMIN")
+               .antMatchers("/**").hasRole("USER")
+               //Доступ разрешен всем пользователей
+               .antMatchers("/", "/resources/**").permitAll()
+               //Все остальные страницы требуют аутентификации
+               .anyRequest().authenticated()
+               .and()
+                    //Настройка для входа в систему
+                    .formLogin()
                     .loginPage("/login")
                     //Перенаправление на главную страницу после успешного входа
                     .defaultSuccessUrl("/")
                     .permitAll()
-                .and()
+               .and()
                     .logout()
                     // логаут разрешаем всем
                     .permitAll()
                     // после логаута отправляем на стартовую страницу
                     .logoutSuccessUrl("/")
-                    //выклчаем кроссдоменную секьюрность (на этапе обучения неважна)
-                    .and().csrf().disable();
+               //выклчаем кроссдоменную секьюрность (на этапе обучения неважна)
+               .and().csrf().disable();
     }
 
-    @Autowired
-    protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService).passwordEncoder((bCryptPasswordEncoder()));
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        super.configure(web);
+        web.ignoring().antMatchers("/", "/sign-up", "/login");
     }
 }

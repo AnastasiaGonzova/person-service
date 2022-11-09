@@ -16,16 +16,16 @@ import static lombok.AccessLevel.PRIVATE;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "user")
+@Entity
+@Table(name = "user_data")
 public class User implements UserDetails {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Setter(PRIVATE)
     private String username;
     private String password;
-    private String passwordConfirm;
 
     @OneToOne
     @JoinColumn(name = "person_data_id")
